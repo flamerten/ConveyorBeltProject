@@ -23,13 +23,19 @@ GPIO.output(EN,GPIO.LOW)
 GPIO.setup(DIR,GPIO.OUT)
 GPIO.output(DIR,GPIO.LOW)
 GPIO.setup(STEP,GPIO.OUT)
-GPIO.setup(ROCKER,GPIO.IN)
+GPIO.setup(ROCKER,GPIO.IN,pull_up_down = GPIO.PUD_DOWN)
 
 #change this depending on the direction of the belt
 GPIO.output(DIR,GPIO.LOW)
 
-for i in range(2000):
-    run_motor()
+while True:
+try:
+    if(GPIO.input(ROCKER) == GPIO.HIGH):
+        run_motor()
+except:
+    print("Exception hit")
+    break
+
 
 GPIO.cleanup()
 print("Done")
