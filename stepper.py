@@ -2,7 +2,7 @@ DIR    = 16
 STEP   = 20
 EN     = 21
 ROCKER = 26
-BEAM   = 12
+BEAM   = 1
 
 
 DELAY_TIME = 5000 #affects the speed of the stepper motor
@@ -33,10 +33,11 @@ GPIO.output(DIR,GPIO.LOW)
 
 while True:
     try:
-        if(GPIO.input(ROCKER) == GPIO.HIGH):
+        if(GPIO.input(BEAM) == GPIO.LOW): #beam broken and not high
+            print("LOW")
+            time.sleep(2)
+        elif(GPIO.input(ROCKER) == GPIO.HIGH):
             run_motor()
-        elif(GPIO.input(BEAM) == GPIO.LOW):            #if the beam is broken, no longer high
-            time.sleep(10)                             #delay for 10s
         #else -> don't move at all
     except:
         print("Exception hit")
