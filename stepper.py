@@ -1,14 +1,15 @@
+import RPi.GPIO as GPIO
+import time
+
+#Define GPIOs for the driver, rocker and the IR beam
 DIR    = 16
 STEP   = 20
 EN     = 21
 ROCKER = 26
 BEAM   = 1
 
-
-DELAY_TIME = 5000 #affects the speed of the stepper motor
-
-import RPi.GPIO as GPIO
-import time
+#affects the speed of the motor
+DELAY_TIME = 5000 
 
 def run_motor():
     GPIO.output(STEP,GPIO.HIGH)
@@ -22,25 +23,25 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN,GPIO.OUT)
 GPIO.output(EN,GPIO.LOW) 
 
+#Setup the GPIOs
 GPIO.setup(DIR,GPIO.OUT)
 GPIO.setup(STEP,GPIO.OUT)
-
 GPIO.setup(ROCKER,GPIO.IN,pull_up_down = GPIO.PUD_DOWN)
 GPIO.setup(BEAM,GPIO.IN,pull_up_down = GPIO.PUD_UP) #neccessary to pull up?
 
-#change this depending on the direction of the belt
+#Set the direction of the motor. Use GPIO.LOW/GPIO.HIGH
 GPIO.output(DIR,GPIO.LOW)
 
 while True:
     try:
         if(GPIO.input(BEAM) == GPIO.LOW): #beam broken and not high
-            print("LOW")
+            print("LOW") #beam broken do something
             time.sleep(2)
         else:
             if(GPIO.input(ROCKER) == GPIO.HIGH):
                 run_motor()
-        #else -> don't move at all
     except:
+        #Keyboard interupt to stop program
         print("Exception hit")
         break
 
