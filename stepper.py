@@ -36,13 +36,14 @@ while True:
         if(GPIO.input(BEAM) == GPIO.LOW): #beam broken and not high
             print("LOW")
             time.sleep(2)
-        elif(GPIO.input(ROCKER) == GPIO.HIGH):
-            run_motor()
+        else:
+            print("High")
+            if(GPIO.input(ROCKER) == GPIO.HIGH):
+                run_motor()
         #else -> don't move at all
     except:
         print("Exception hit")
         break
-
 
 GPIO.cleanup()
 print("Done")
