@@ -9,7 +9,7 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(BEAM,GPIO.IN)
+GPIO.setup(BEAM,GPIO.IN,pull_up_down = GPIO.PUD_UP)
 
 for i in range(10):
     if(GPIO.input(BEAM) == GPIO.HIGH):

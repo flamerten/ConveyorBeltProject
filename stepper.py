@@ -26,7 +26,7 @@ GPIO.setup(DIR,GPIO.OUT)
 GPIO.setup(STEP,GPIO.OUT)
 
 GPIO.setup(ROCKER,GPIO.IN,pull_up_down = GPIO.PUD_DOWN)
-GPIO.setup(BEAM,GPIO.IN)
+GPIO.setup(BEAM,GPIO.IN,pull_up_down = GPIO.PUD_UP) #neccessary to pull up?
 
 #change this depending on the direction of the belt
 GPIO.output(DIR,GPIO.LOW)
@@ -37,7 +37,6 @@ while True:
             print("LOW")
             time.sleep(2)
         else:
-            print("High")
             if(GPIO.input(ROCKER) == GPIO.HIGH):
                 run_motor()
         #else -> don't move at all
