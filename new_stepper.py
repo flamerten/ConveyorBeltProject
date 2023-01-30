@@ -1,4 +1,4 @@
-import TMC_Stepper
+from TMC_Stepper import TMCSteppper
 import RPi.GPIO as GPIO
 import time
 
@@ -12,7 +12,7 @@ BEAM   = 1
 #affects the speed of the motor
 DELAY_TIME = 5000 
 
-RollerStepper = TMC_Stepper(EN,STEP,DIR,DELAY_TIME*0.0000001)
+RollerStepper = TMCSteppper(EN,STEP,DIR,DELAY_TIME*0.0000001)
 
 RollerStepper.setDirection(True)
 RollerStepper.EnableMotor()
