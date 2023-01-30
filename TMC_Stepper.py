@@ -3,6 +3,7 @@ import time
 
 class TMCSteppper:
     def __init__(self, EN, STEP, DIR, StepDelay,bcm_mode = True):
+        # First 3 are various pins, last parameter is the default delay between each steps.
         self.ENABLE = EN
         self.STEP = STEP
         self.DIR = DIR
