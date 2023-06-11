@@ -1,5 +1,7 @@
 # ConveyorBeltProject 
 
+## Introduction
+This repository consists of Raspberry Pi Python Code that is used to control a stepper motor through the TMC2208 Stepper Motor Driver through the use of a Rocker Switch and an IR sensor. This repository is meant for a stepper motor driving a conveyorbelt.
 ### [Software](#software)
  - [RPI Details](#rpi-details)
  - [Accessing the RPI through SSH](#accessing-the-rpi-through-ssh)
@@ -18,7 +20,7 @@
 #
 
 # Software
-There are no requirements, as the time and RPi library should have been installed. However, the `TMC_Stepper.py` file should be downloaded and put in the same directory as `new_stepper.py`.
+There are no requirements, as the time and RPi library should have been installed in the Raspian OS. However, the `TMC_Stepper.py` file should be downloaded and put in the same directory as `new_stepper.py`.
 
 ## RPI Details
     Username: pi
@@ -51,10 +53,8 @@ Setting the current limit is important to ensure that the current flowing into t
 ![TMC2208](https://howtomechatronics.com/wp-content/uploads/2022/05/TMC2208-current-limiting-by-measuring-the-reference-voltage.png?ezimgfmt=ng:webp/ngcb2)
 
 
-# Github Sync
-I could not get the Raspberry Pi to push to the repo, as I could not give it permissions. Hence, there is no way to merge changes. I would simply edit it and push through my computer and pull through the Raspberry Pi.
-
 ## Repo From New Folder
+Creating the repository in a new folder
 
     mkdir ConveyorBeltProject
     cd ConveyorBeltProject
@@ -73,4 +73,4 @@ Note: Assumes that Git is initialised
 # Resources 
 https://howtomechatronics.com/tutorials/arduino/stepper-motors-and-arduino-the-ultimate-guide/
 
-note that the step duration is 10x of the example code given in the resource above, as the resource is using an Arduino but we are using an RPI.
+note that the step duration is 10x of the example code given in the resource above, as the resource is using an Arduino but we are using an Raspberry Pi.
